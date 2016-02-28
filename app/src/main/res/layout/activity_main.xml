@@ -27,7 +27,7 @@
                 android:id="@+id/buttongin"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:onClick="pushgin"
+                android:onClick="clickGin"
                 android:src="@drawable/gordonsgin" />
 
             <ImageView
@@ -57,22 +57,24 @@
                 android:layout_height="match_parent"
                 android:id="@+id/buttontonic"
                 android:layout_weight="1"
-                android:onClick="pushtonic"
+                android:onClick="clickTonic"
                 android:src="@drawable/tonicwater" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView4"
                 android:layout_weight="1"
-                android:onClick="pushtonic" />
+                android:onClick="pushorange"
+                android:id="@+id/buttonorange"
+                android:src="@drawable/orangedole" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView5"
+                android:id="@+id/buttongrape"
                 android:layout_weight="1"
-                android:onClick="pushtonic" />
+                android:onClick="pushgrape"
+                android:src="@drawable/grapedole" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
