@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="pushorange"
+                android:onClick="clickorange"
                 android:id="@+id/buttonorange"
                 android:src="@drawable/orangedole" />
 
@@ -73,8 +73,9 @@
                 android:layout_height="match_parent"
                 android:id="@+id/buttongrape"
                 android:layout_weight="1"
-                android:onClick="pushgrape"
+                android:onClick="clickgrape"
                 android:src="@drawable/grapedole" />
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

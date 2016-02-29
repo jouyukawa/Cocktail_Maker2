@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     public SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -27,7 +27,7 @@ class MainActivity extends AppCompatActivity {
     private ImageView buttonTonic;
     private ImageView buttonOrange;
     private ImageView buttonGrape;
-
+    public int cocktailnum = 0;
 
     //アプリが起動した時に呼ばれる関数
     @Override
@@ -37,6 +37,11 @@ class MainActivity extends AppCompatActivity {
 
         //SharedPreferencesを使うための初期設定
         pref = getSharedPreferences("cocktail_base", MODE_PRIVATE);
+
+        editor = pref.edit();
+        editor.putBoolean("Gin", false);
+        editor.commit();
+
 
         //button-変数と activity_main.xmlのidを結びつける
         buttonGin = (ImageView)findViewById(R.id.buttongin);
@@ -53,7 +58,6 @@ class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void clickGin(View v){
         //トーストを表示
         Toast.makeText(this, "ジンを手に取りました", Toast.LENGTH_SHORT).show();
@@ -66,19 +70,64 @@ class MainActivity extends AppCompatActivity {
 
     }
 
+    //ジントニックのint coctailnum = 1を取得する
     public void clickTonic(View v){
         //ジンを選択しているかどうか
         if (pref.getBoolean("Gin",false)==true){
-            Toast.makeText(this, "作れるカクテルがあるよ", Toast.LENGTH_SHORT).show();
+            //Tonicを見えなくする
+            Toast.makeText(this, "トニックを手に取りました", Toast.LENGTH_SHORT).show();
+
+            buttonTonic.setVisibility(View.INVISIBLE);
+
+            editor = pref.edit();
+            editor.putBoolean("Tonic", true);
+            editor.commit();
+
+            Toast.makeText(this, "作れるカクテルがあるよ！", Toast.LENGTH_SHORT).show();
+
+            cocktailnum = 1;
 
             //shake画面へ移動
-            Intent intent = new Intent(this, shakeActivity2.class);
+            Intent intent = new Intent(this, CocktailConclusion.class);
+
+            //intの値の受け渡し処理
+            intent.putExtra("COCKTAILCODE", cocktailnum);
             startActivity(intent);
+
+
 
         }else{
             Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
         }
 
     }
+
+    //オレンジブロッサムのint coctailnum = 3を取得する
+    public int clickorange (View v){
+        //ジンを選択しているかどうか
+        if (pref.getBoolean("Gin",false)==true){
+            Toast.makeText(this, "作れるカクテルがあるよ", Toast.LENGTH_SHORT).show();
+            cocktailnum = 3;
+            return cocktailnum;
+
+        }else{
+            Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
+            return cocktailnum;
+        }
+
+    }
+
+
+    public void intent(){
+
+            //shake画面へ移動
+            Intent intent = new Intent(this, CocktailConclusion.class);
+
+            //intの値の受け渡し処理
+            intent.putExtra("COCKTAILCODE", cocktailnum);
+            startActivity(intent);
+
+    }
+
 
 }
