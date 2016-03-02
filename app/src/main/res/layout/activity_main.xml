@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:src="@drawable/vodka_sminoff"
-                android:onClick="clickvodka" />
+                android:onClick="clickVodka" />
 
             <ImageView
                 android:layout_width="match_parent"

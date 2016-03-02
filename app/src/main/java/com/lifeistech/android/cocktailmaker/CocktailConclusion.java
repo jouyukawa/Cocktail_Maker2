@@ -37,7 +37,7 @@ public class CocktailConclusion extends AppCompatActivity {
 
         gintonic();
         orangeblossom();
-
+        screwdriver();
 
     }
 
@@ -66,6 +66,20 @@ public class CocktailConclusion extends AppCompatActivity {
             //画像の配置
             ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
             imageview.setImageResource(R.drawable.orangeblossam);
+
+
+        }
+    }
+
+    //スクリュードライバー (resultnum == 12)
+    public void screwdriver() {
+        if (resultnum == 12){
+
+            explaincock.setText("スクリュードライバーの説明");
+
+            //画像の配置
+            ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
+            imageview.setImageResource(R.drawable.screwdriver);
 
 
         }

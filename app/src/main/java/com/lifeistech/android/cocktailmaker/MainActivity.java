@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         editor = pref.edit();
         editor.putBoolean("Gin", false);
+        editor.putBoolean("Vodka", false);
         editor.commit();
-
 
         //button-変数と activity_main.xmlのidを結びつける
         buttonGin = (ImageView)findViewById(R.id.buttongin);
@@ -149,6 +149,30 @@ public class MainActivity extends AppCompatActivity {
             //intの値の受け渡し処理
             intent.putExtra("COCKTAILCODE", cocktailnum);
             startActivity(intent);
+
+        //ウォッカを選択している場合→スクリュードライバーへ
+        // int cocktail num = 12 取得
+        }else if(pref.getBoolean("Vodka", false) == true){
+            //Orangejuiceを見えなくする
+            Toast.makeText(this, "オレンジジュースを手に取りました", Toast.LENGTH_SHORT).show();
+
+            buttonOrange.setVisibility(View.INVISIBLE);
+
+            editor = pref.edit();
+            editor.putBoolean("Orange", true);
+            editor.commit();
+
+            Toast.makeText(this, "作れるカクテルがあるよ！", Toast.LENGTH_SHORT).show();
+
+            cocktailnum = 12;
+
+            //shake画面へ移動
+            Intent intent = new Intent(this, shakeActivity2.class);
+
+            //intの値の受け渡し処理
+            intent.putExtra("COCKTAILCODE", cocktailnum);
+            startActivity(intent);
+
 
         }else{
             Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
