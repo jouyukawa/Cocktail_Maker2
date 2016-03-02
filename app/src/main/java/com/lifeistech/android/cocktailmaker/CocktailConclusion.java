@@ -22,7 +22,7 @@ public class CocktailConclusion extends AppCompatActivity {
     String explain;
 
     //MainActivityの結果を引き継ぐ為の引数
-    private int resultnum;
+    public int resultnum;
 
 
     public void onCreate (Bundle savedInstanceState) {
@@ -36,10 +36,14 @@ public class CocktailConclusion extends AppCompatActivity {
         resultnum = extras.getInt("COCKTAILCODE");
 
         gintonic();
+        orangeblossom();
+
 
     }
 
     //resultnumの値に応じて、対応するカクテルの画像と説明を表示
+
+    //　ジントニック (resultnum == 1)
     public void gintonic() {
         if (resultnum == 1){
 
@@ -53,7 +57,19 @@ public class CocktailConclusion extends AppCompatActivity {
         }
     }
 
+    //オレンジブロッサム (resultnum == 3)
+    public void orangeblossom() {
+        if (resultnum == 3){
 
+            explaincock.setText("オレンジ・ブロッサム（英語：orange blossom）は、ジンベースのカクテル。");
+
+            //画像の配置
+            ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
+            imageview.setImageResource(R.drawable.orangeblossam);
+
+
+        }
+    }
 
 
 }

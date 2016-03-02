@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private ImageView buttonGin;
+    private ImageView buttonVodka;
     private ImageView buttonTonic;
     private ImageView buttonOrange;
     private ImageView buttonGrape;
@@ -48,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
         buttonTonic = (ImageView)findViewById(R.id.buttontonic);
         buttonGrape = (ImageView)findViewById(R.id.buttongrape);
         buttonOrange = (ImageView)findViewById(R.id.buttonorange);
+        buttonVodka = (ImageView)findViewById(R.id.buttonvodka);
 
 
         //ジンが取られたら
         if(pref.getBoolean("Gin", false) == true){
             //ジンを見えなくする
             buttonGin.setVisibility(View.INVISIBLE);
+
+        }
+
+        //ウォッカが取られたら
+        if(pref.getBoolean("Vodka", false) == true){
+            //ジンを見えなくする
+            buttonVodka.setVisibility(View.INVISIBLE);
 
         }
     }
@@ -70,9 +79,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //ジントニックのint coctailnum = 1を取得する
+    //ウォッカをクリックした際の処理
+    public void clickVodka (View v){
+        //トーストを表示
+        Toast.makeText(this, "ウォッカを手に取りました", Toast.LENGTH_SHORT).show();
+
+        //SharedPreferencesにウォッカを手に入れたことを書き込む
+        editor = pref.edit();
+        editor.putBoolean("Vodka", true);
+        editor.commit();
+        //ジンを見えなくする
+        buttonVodka.setVisibility(View.INVISIBLE);
+
+    }
+
+    //トニックをクリックした時の処理
     public void clickTonic(View v){
-        //ジンを選択しているかどうか
+        //ジンを選択しているかどうか→ジントニックを作る
+        //int coctailnum = 1を取得し、画面遷移
         if (pref.getBoolean("Gin",false)==true){
             //Tonicを見えなくする
             Toast.makeText(this, "トニックを手に取りました", Toast.LENGTH_SHORT).show();
@@ -88,46 +112,59 @@ public class MainActivity extends AppCompatActivity {
             cocktailnum = 1;
 
             //shake画面へ移動
-            Intent intent = new Intent(this, CocktailConclusion.class);
+            Intent intent = new Intent(this, shakeActivity2.class);
 
             //intの値の受け渡し処理
             intent.putExtra("COCKTAILCODE", cocktailnum);
             startActivity(intent);
 
-
-
-        }else{
+        } else{
             Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    //オレンジブロッサムのint coctailnum = 3を取得する
-    public int clickorange (View v){
-        //ジンを選択しているかどうか
+
+    //オレンジジュースを選択した場合の処理
+    public void clickorange(View v){
+        //ジンを選択している場合→オレンジブロッサムへ
+        //→int coctailnum = 3を取得する
         if (pref.getBoolean("Gin",false)==true){
-            Toast.makeText(this, "作れるカクテルがあるよ", Toast.LENGTH_SHORT).show();
+            //Orangejuiceを見えなくする
+            Toast.makeText(this, "オレンジジュースを手に取りました", Toast.LENGTH_SHORT).show();
+
+            buttonOrange.setVisibility(View.INVISIBLE);
+
+            editor = pref.edit();
+            editor.putBoolean("Orange", true);
+            editor.commit();
+
+            Toast.makeText(this, "作れるカクテルがあるよ！", Toast.LENGTH_SHORT).show();
+
             cocktailnum = 3;
-            return cocktailnum;
-
-        }else{
-            Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
-            return cocktailnum;
-        }
-
-    }
-
-
-    public void intent(){
 
             //shake画面へ移動
-            Intent intent = new Intent(this, CocktailConclusion.class);
+            Intent intent = new Intent(this, shakeActivity2.class);
 
             //intの値の受け渡し処理
             intent.putExtra("COCKTAILCODE", cocktailnum);
             startActivity(intent);
 
+        }else{
+            Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
+    //グレープフルーツジュースをクリックした時の処理
+    public void clickgrape (View v){
+        //ジンを選択しているかどうか→作れるお酒なし
+        if (pref.getBoolean("Gin",false)==true){
+            Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "作れるカクテルがありません", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 }

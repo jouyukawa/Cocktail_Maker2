@@ -18,6 +18,9 @@
         <activity android:name=".CocktailConclusion">
 
         </activity>
+        <activity android:name=".shakeActivity2">
+            
+        </activity>
     </application>
 
 </manifest>

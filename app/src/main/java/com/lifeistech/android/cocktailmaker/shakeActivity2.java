@@ -21,6 +21,8 @@ public class shakeActivity2 extends Activity implements SensorEventListener {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
 
+    //MainActivityの結果を引き継ぐ為の引数
+    public int resultnum;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,11 @@ public class shakeActivity2 extends Activity implements SensorEventListener {
 
         //加速度センサーの取得
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        //MainActivityの結果を引き継ぎ
+        Bundle extras = getIntent().getExtras();
+        resultnum = extras.getInt("COCKTAILCODE");
+
 
     }
 
@@ -69,7 +76,11 @@ public class shakeActivity2 extends Activity implements SensorEventListener {
         //加速度の取得
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
+            //shake画面へ移動
             Intent intent = new Intent(this, CocktailConclusion.class);
+
+            //intの値の受け渡し処理
+            intent.putExtra("COCKTAILCODE", resultnum);
             startActivity(intent);
 
         }

@@ -33,9 +33,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView2"
+                android:id="@+id/buttonvodka"
                 android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/vodka_sminoff"
+                android:onClick="clickvodka" />
 
             <ImageView
                 android:layout_width="match_parent"
