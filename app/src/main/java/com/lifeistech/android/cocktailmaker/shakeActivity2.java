@@ -10,34 +10,53 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
 /**
  * Created by joeykw on 2016/02/27.
  */
-public class shakeActivity2 extends Activity implements SensorEventListener {
 
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
+public class shakeActivity2 extends Activity implements SensorEventListener {
 
     //MainActivityの結果を引き継ぐ為の引数
     public int resultnum;
+
+    private ShakeListenr mShakerListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shake);
-
-        //SensorManagerのインスタンスを取得
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-        //加速度センサーの取得
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Toast.makeText(this, "shake!!", Toast.LENGTH_SHORT).show();
 
         //MainActivityの結果を引き継ぎ
         Bundle extras = getIntent().getExtras();
         resultnum = extras.getInt("COCKTAILCODE");
+
+        //ShakerListenerのインスタンスを作る
+        mShakerListener = new ShakeListenr(this);
+
+        //リスナーをセット
+        mShakerListener.setOnShakeListener(new ShakeListenr.OnShakeListener(){
+            //シェイクを検知すると
+            //以下のOnShakeメソッドが呼び出されます
+
+            public void onShake() {
+
+                //結果画面へ移動
+                Intent intent = new Intent(shakeActivity2.this, CocktailConclusion.class);
+
+                //intの値の受け渡し処理
+                intent.putExtra("COCKTAILCODE", resultnum);
+                startActivity(intent);
+
+
+            }
+
+
+        });
 
 
     }
@@ -46,44 +65,27 @@ public class shakeActivity2 extends Activity implements SensorEventListener {
     @Override
     public void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
-        //センサー処理の開始
-        //加速度センサーのリスナーを登録
-        List<Sensor> sensors = mSensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
-        if (sensors.size() > 0) {
-            Sensor s = sensors.get(0);
-            mSensorManager.registerListener(this, s, SensorManager.SENSOR_DELAY_UI);
-        }
+        //アクチビティのonResumeメソッドで
+        //ShakerListenerのonResumeメソッドを呼び出してください
+        //センサーの準備をします
+        mShakerListener.onResume();
     }
 
     @Override
     public void onPause() {
         //加速度センサーのリスナーを解除
-        mSensorManager.unregisterListener(this);
+        mShakerListener.onPause();
         super.onPause();
-
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        //加速度の取得
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+    }
 
-            //shake画面へ移動
-            Intent intent = new Intent(this, CocktailConclusion.class);
-
-            //intの値の受け渡し処理
-            intent.putExtra("COCKTAILCODE", resultnum);
-            startActivity(intent);
-
-        }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 }

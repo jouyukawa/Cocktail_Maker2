@@ -5,13 +5,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="@drawable/barcounter">
+    android:background="@drawable/barcountershelf">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true">
 
         <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:onClick="clickGin"
-                android:src="@drawable/gordonsgin" />
+                android:src="@drawable/gordonsgin5" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -42,9 +42,19 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView3"
+                android:id="@+id/buttontequlla"
                 android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="clicktequila"
+                android:src="@drawable/tequila2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonrum"
+                android:layout_weight="1"
+                android:onClick="clickrum" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -57,10 +67,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/buttontonic"
+                android:id="@+id/buttongrape"
                 android:layout_weight="1"
-                android:onClick="clickTonic"
-                android:src="@drawable/tonicwater" />
+                android:onClick="clickgrape"
+                android:src="@drawable/grapefruit2" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -68,16 +78,26 @@
                 android:layout_weight="1"
                 android:onClick="clickorange"
                 android:id="@+id/buttonorange"
-                android:src="@drawable/orangedole" />
+                android:src="@drawable/orangedole2" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/buttongrape"
+                android:id="@+id/buttonGinger"
                 android:layout_weight="1"
-                android:onClick="clickgrape"
-                android:src="@drawable/grapedole" />
+                android:adjustViewBounds="false"
+                android:src="@drawable/canadadrygingerale"
+                android:onClick="clickginger" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/buttontonic"
+                android:layout_weight="1"
+                android:onClick="clickTonic"
+                android:src="@drawable/tonicwater" />
 
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

@@ -7,6 +7,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/imageView"
-        android:src="@drawable/cocktaishaker2"
+        android:src="@drawable/cocktailshaker1"
         android:background="@drawable/barcounter" />
 </LinearLayout>

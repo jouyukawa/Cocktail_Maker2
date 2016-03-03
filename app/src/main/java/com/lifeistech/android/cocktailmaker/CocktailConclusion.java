@@ -19,7 +19,6 @@ public class CocktailConclusion extends AppCompatActivity {
 
     //カクテル解説用の文をここで設定
     TextView explaincock;
-    String explain;
 
     //MainActivityの結果を引き継ぐ為の引数
     public int resultnum;
@@ -38,6 +37,9 @@ public class CocktailConclusion extends AppCompatActivity {
         gintonic();
         orangeblossom();
         screwdriver();
+        tequilasunrise();
+        bulldog();
+        moscomule();
 
     }
 
@@ -71,6 +73,34 @@ public class CocktailConclusion extends AppCompatActivity {
         }
     }
 
+    //モスコミュールの説明
+    public void moscomule() {
+        if (resultnum == 9){
+
+            explaincock.setText("モスコミュールとは、、");
+
+            //画像の配置
+            ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
+            imageview.setImageResource(R.drawable.moscomule);
+
+
+        }
+    }
+
+    //ブルドッグの説明
+    public void bulldog() {
+        if (resultnum == 10){
+
+            explaincock.setText("ソルティドッグとは、、");
+
+            //画像の配置
+            ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
+            imageview.setImageResource(R.drawable.bulldog);
+
+
+        }
+    }
+
     //スクリュードライバー (resultnum == 12)
     public void screwdriver() {
         if (resultnum == 12){
@@ -81,6 +111,19 @@ public class CocktailConclusion extends AppCompatActivity {
             ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
             imageview.setImageResource(R.drawable.screwdriver);
 
+
+        }
+    }
+
+    //テキーラサンライズ (resultnum = 20)
+    public void tequilasunrise() {
+        if (resultnum == 20){
+
+            explaincock.setText("テキラーサンライズとは、、");
+
+            //画像の配置
+            ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
+            imageview.setImageResource(R.drawable. tequilasunrise);
 
         }
     }
