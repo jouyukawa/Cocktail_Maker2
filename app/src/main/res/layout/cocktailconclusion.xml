@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#191970">
+    android:background="@drawable/barcounter5">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/barcounter5">
+        android:layout_weight="1">
 
         <LinearLayout
             android:orientation="vertical"
@@ -37,8 +37,10 @@
                 android:text="Large Text"
                 android:id="@+id/textView"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:background="@drawable/parchment" />
+                android:layout_margin="20dp"
+                android:background="@drawable/parchment"
+                android:layout_weight="1"
+                android:textSize="12dp" />
 
         </LinearLayout>
 

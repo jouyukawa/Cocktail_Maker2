@@ -163,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("Tonic", true);
             editor.commit();
 
-            Toast.makeText(this, "作れるカクテルがあるよ！", Toast.LENGTH_SHORT).show();
 
             cocktailnum = 1;
 

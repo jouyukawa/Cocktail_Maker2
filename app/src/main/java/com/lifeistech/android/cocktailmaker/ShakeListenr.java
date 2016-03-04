@@ -87,7 +87,6 @@ public class ShakeListenr implements SensorEventListener {
                 // シェイクカウントをインクリメント
                 mShakeCount++;
                 // 4回連続スピードが300以上なら
-                // シェイクと認定（お好みで変えてください）
                 if (mShakeCount > 3) {
                     mShakeCount = 0;
                     // リスナーがセットされていれば

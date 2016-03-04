@@ -29,7 +29,7 @@ public class shakeActivity2 extends Activity implements SensorEventListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shake);
-        Toast.makeText(this, "shake!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "shake!!", Toast.LENGTH_LONG).show();
 
         //MainActivityの結果を引き継ぎ
         Bundle extras = getIntent().getExtras();
