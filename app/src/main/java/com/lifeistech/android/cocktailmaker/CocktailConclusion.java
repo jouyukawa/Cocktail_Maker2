@@ -55,10 +55,6 @@ public class CocktailConclusion extends AppCompatActivity {
             ImageView imageview = (ImageView)findViewById(R.id.imgcocktail);
             imageview.setImageResource(R.drawable.gintonic);
 
-            //名前の配置
-            TextView textView = (TextView)findViewById(R.id.cocktailname);
-            textView.setText(String.valueOf("ジントニック"));
-
 
         }
     }

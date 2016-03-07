@@ -82,8 +82,8 @@ public class ShakeListenr implements SensorEventListener {
             // 前回の値との差からスピードを計算
             float speed = Math.abs(x+y+z - mLastX-mLastY-mLastZ)
                     / diffTime * 10000;
-            // スピードが300以上なら（お好みで変えてください）
-            if (speed > 300) {
+            // スピードが300以上なら
+            if (speed > 400) {
                 // シェイクカウントをインクリメント
                 mShakeCount++;
                 // 4回連続スピードが300以上なら
